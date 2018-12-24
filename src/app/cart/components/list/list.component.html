@@ -1,0 +1,74 @@
+<div class="cart-table-area">
+    <div class="container-fluid">
+        <div class="row" *ngIf="items?.length > 0; else cartEmpty">
+            <div class="col-12 col-lg-8">
+                <div class="cart-title mt-50">
+                    <h2>Shopping Cart</h2>
+                </div>
+
+                <div class="cart-table clearfix">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of items; trackBy: trackByFn">
+                                <td class="cart_product_img">
+                                    <a [routerLink]="['/', item.slug]"><img src="assets/img/bg-img/cart1.jpg" alt="Product"></a>
+                                </td>
+                                <td class="cart_product_desc">
+                                    <h5><a [routerLink]="['/', item.slug]">{{ item.title }}</a></h5>
+                                    <button type="button" class="btn-delete" (click)="remove.emit(item)"><i class="fa fa-close" aria-hidden="true"></i></button>
+                                </td>
+                                <td class="price">
+                                    <span>{{ item.value | currency:'BRL' }}</span>
+                                </td>
+                                <td class="qty">
+                                    <div class="qty-btn d-flex">
+                                        <p>Qty</p>
+                                        <div class="quantity">
+                                            <span class="qty-minus" (click)="reduceQuantity.emit(item)" *ngIf="item.amount > 1"><i class="fa fa-caret-down"
+                          aria-hidden="true"></i></span>
+                                            <input type="number" class="qty-text" id="qty" step="1" min="1" max="99" name="quantity" value="{{ item.amount }}" readonly>
+                                            <span class="qty-plus" (click)="increaseQuantity.emit(item)"><i class="fa fa-caret-up"
+                          aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="cart-summary">
+                    <h5>Cart Total</h5>
+                    <ul class="summary-table">
+                        <li><span>subtotal:</span> <span>{{ totalCart | currency:'BRL' }}</span></li>
+                        <li><span>delivery:</span> <span>Free</span></li>
+                        <li><span>total:</span> <span>{{ totalCart | currency:'BRL' }}</span></li>
+                    </ul>
+                    <div class="cart-btn mt-100">
+                        <a [routerLink]="['/checkout']" class="btn amado-btn w-100">Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ng-template #cartEmpty>
+            <div class="col-12">
+                <hr />
+                <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                    <h1 class="display-4">Seu carrinho está vazio!</h1>
+                    <p class="lead"><a class="nav-link" [routerLink]="['/shop/all-products']">Não perca tempo, aproveite as
+              ofertas.</a></p>
+                </div>
+                <hr />
+            </div>
+        </ng-template>
+    </div>
+</div>

@@ -1,0 +1,148 @@
+@import './../../../../assets/scss/dependencies';
+.shop_sidebar_area {
+    position: relative;
+    z-index: 1;
+    @include flex(0 0 230px);
+    width: 230px;
+    max-width: 230px;
+    background-color: #f5f7fa;
+    padding: 100px 40px;
+    @media #{$breakpoint-md} {
+        @include flex(0 0 180px);
+        width: 180px;
+        max-width: 180px;
+        padding: 100px 15px;
+    }
+    @media #{$breakpoint-xs} {
+        @include flex(0 0 100%);
+        width: 100%;
+        max-width: 100%;
+        -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+        order: 2;
+    }
+}
+
+.widget {
+    position: relative;
+    z-index: 1;
+    .widget-title {
+        font-size: 16px;
+        text-transform: capitalize;
+        color: #242424;
+    }
+    .catagories-menu {
+        li {
+            a {
+                text-transform: capitalize;
+                font-size: 16px;
+                padding: 15px 0 15px 20px;
+                display: block;
+                font-weight: 400;
+                color: #959595;
+                &:hover,
+                &:focus {
+                    color: $bg-default;
+                }
+                &.active {
+                    color: $bg-default;
+                }
+            }
+            &.active a {
+                color: $bg-default;
+            }
+        }
+    }
+    &.price {
+        .slider-range-price {
+            background-color: #c7d2d8 !important;
+            height: 2px;
+            border: none;
+        }
+        .ui-slider-handle {
+            background-color: #fff;
+            top: -7px;
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            border: 2px solid $bg-default;
+            border-radius: 50%;
+        }
+        .ui-slider-range.ui-corner-all.ui-widget-header {
+            background-color: $bg-default;
+        }
+        .ui-slider-horizontal {
+            height: 2px;
+            background-color: $bg-default;
+        }
+        .range-price {
+            font-size: 16px;
+            font-weight: 400;
+            margin-top: 20px;
+            text-transform: uppercase;
+            color: #959595;
+        }
+    }
+    &.color {
+        .widget-desc ul {
+            @include flex-wrap(wrap);
+            li {
+                @include flex(0 0 25%);
+                width: 25%;
+                margin-bottom: 15px;
+                a {
+                    width: 30px;
+                    height: 30px;
+                    display: block;
+                    border-radius: 50%;
+                    background-color: $white-color;
+                    position: relative;
+                    z-index: 1;
+                    box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+                    &.color1 {
+                        background-color: $white-color;
+                    }
+                    &.color2 {
+                        background-color: #969696;
+                    }
+                    &.color3 {
+                        background-color: #030303;
+                    }
+                    &.color4 {
+                        background-color: #0315ff;
+                    }
+                    &.color5 {
+                        background-color: #dc0647;
+                    }
+                    &.color6 {
+                        background-color: #fff56a;
+                    }
+                    &.color7 {
+                        background-color: #f26e51;
+                    }
+                    &.color8 {
+                        background-color: #9a8777;
+                    }
+                }
+            }
+        }
+    }
+    &.brands {
+        .form-check {
+            margin-bottom: 25px;
+            label {
+                @include trans-duration(500ms);
+                font-size: 16px;
+                color: #959595;
+                font-weight: 400;
+                cursor: pointer;
+                &:hover {
+                    color: $bg-default;
+                }
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

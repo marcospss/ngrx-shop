@@ -1,0 +1,55 @@
+<!-- Mobile Nav (max width 767px)-->
+<div class="mobile-nav">
+    <!-- Navbar Brand -->
+    <div class="amado-navbar-brand">
+        <a [routerLink]="['/home']" (click)="closeMobileNav.emit()"><img src="assets/img/core-img/logo.png" alt=""></a>
+    </div>
+    <!-- Navbar Toggler -->
+    <div class="amado-navbar-toggler" (click)="openMobileNav.emit()">
+        <span></span><span></span><span></span>
+    </div>
+</div>
+
+<!-- Header Area Start -->
+<header class="header-area clearfix" [ngClass]="{'bp-xs-on': showMobileNav }">
+    <!-- Close Icon -->
+    <div class="nav-close" (click)="closeMobileNav.emit()">
+        <i class="fa fa-close" aria-hidden="true"></i>
+    </div>
+    <!-- Logo -->
+    <div class="logo">
+        <a [routerLink]="['/home']"><img src="assets/img/core-img/logo.png" alt=""></a>
+    </div>
+    <!-- Amado Nav -->
+    <nav class="amado-nav">
+        <ul>
+            <li><a [routerLink]="['/home']" [routerLinkActive]="['active']">Home</a></li>
+            <li><a [routerLink]="['/shop']" [routerLinkActive]="['active']">Shop</a></li>
+            <!-- <li><a [routerLink]="['/product-details']">Product</a></li> -->
+            <li><a [routerLink]="['/cart']" [routerLinkActive]="['active']">Cart <span>({{
+            totalItems }})</span></a></li>
+            <li><a [routerLink]="['/checkout']" [routerLinkActive]="['active']">Checkout</a></li>
+        </ul>
+    </nav>
+    <!-- Button Group -->
+    <div class="amado-btn-group mt-30 mb-100">
+        <a [routerLink]="['/shop/all-products']" class="btn amado-btn mb-15">%Discount%</a>
+        <a [routerLink]="['/shop/all-products']" class="btn amado-btn active">New this week</a>
+    </div>
+    <!-- Cart Menu -->
+    <div class="cart-fav-search mb-100">
+        <a [routerLink]="['/cart']" class="cart-nav" [routerLinkActive]="['active']"><img src="assets/img/core-img/cart.png" alt=""> Cart <span>({{
+        totalItems }})</span></a>
+        <a [routerLink]="['/favourite']" class="fav-nav" [routerLinkActive]="['active']"><img src="assets/img/core-img/favorites.png" alt=""> Favourite</a>
+        <button type="button" (click)="openSearchBar.emit()" class="search-nav"><img src="assets/img/core-img/search.png"
+        alt=""> Search</button>
+    </div>
+    <!-- Social Button -->
+    <div class="social-info d-flex justify-content-between">
+        <a [routerLink]="['/home']"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+        <a [routerLink]="['/home']"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a [routerLink]="['/home']"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        <a [routerLink]="['/home']"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    </div>
+</header>
+<!-- Header Area End -->

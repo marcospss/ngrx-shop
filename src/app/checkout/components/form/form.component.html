@@ -1,0 +1,103 @@
+<div class="container cart-table-area">
+    <div class="row" *ngIf="!orderStatus">
+        <div class="col-12 col-lg-8">
+            <div class="checkout_details_area mt-50 clearfix">
+
+                <div class="cart-title">
+                    <h2>Checkout</h2>
+                </div>
+
+                <form novalidate [formGroup]="formCheckout" [ngClass]="{'was-validated': checkFormInvalid }">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control" id="firstName" formControlName="firstName" value="" placeholder="First Name" required [ngClass]="{'is-invalid': checkValidInput('firstName')}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control" id="lastName" formControlName="lastName" value="" placeholder="Last Name" required [ngClass]="{'is-invalid': checkValidInput('lastName')}">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email" value="" required [ngClass]="{'is-invalid': checkValidInput('email') || checkEmailValid() }">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input type="tel" class="form-control" id="phoneNumber" formControlName="phoneNumber" maxlength="10" placeholder="Phone No" value="" required [ngClass]="{'is-invalid': checkValidInput('phoneNumber')}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control" id="company" formControlName="company" placeholder="Company Name" value="" required [ngClass]="{'is-invalid': checkValidInput('company')}">
+                        </div>
+                    </div>
+                    <div class="row" formGroupName="address">
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control" id="zipCode" formControlName="zipCode" placeholder="Zip Code" value="" required [ngClass]="{'is-invalid': checkValidInput('address.zipCode')}" maxlength="9" (blur)="searchAddress.emit($event.target.value);">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <input type="text" class="form-control" id="city" formControlName="city" placeholder="Town" value="" required [ngClass]="{'is-invalid': checkValidInput('address.city')}">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <select class="w-100" id="country" class="custom-select" formControlName="country" required [ngClass]="{'is-invalid': checkValidInput('address.country')}">
+                                    <option value="">Choose...</option>
+                                    <option *ngFor="let state of stateCountry" [value]="state.acronyms">{{ state.name }}</option>
+                                </select>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <input type="text" class="form-control mb-3" id="streetAddress" formControlName="streetAddress" placeholder="Address" value="" required [ngClass]="{'is-invalid': checkValidInput('address.streetAddress')}">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <input type="text" class="form-control" id="complement" formControlName="complement" placeholder="Complement (optional)">
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-12 mb-3">
+                            <textarea name="comment" class="form-control w-100" id="comment" formControlName="comment" cols="30" rows="10" placeholder="Leave a comment about your order"></textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <!-- <div class="custom-control custom-checkbox d-block mb-2">
+                                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                <label class="custom-control-label" for="customCheck2">Create an accout</label>
+                            </div>
+                            <div class="custom-control custom-checkbox d-block">
+                                <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                <label class="custom-control-label" for="customCheck3">Ship to a different address</label>
+                            </div> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4">
+            <div class="cart-summary">
+                <h5>Cart Total</h5>
+                <ul class="summary-table">
+                    <li><span>subtotal:</span> <span>{{ totalCart | currency:'BRL' }}</span></li>
+                    <li><span>delivery:</span> <span>Free</span></li>
+                    <li><span>total:</span> <span>{{ totalCart | currency:'BRL' }}</span></li>
+                </ul>
+
+                <div class="payment-method">
+                    <!-- Cash on delivery -->
+                    <!-- <div class="custom-control custom-checkbox mr-sm-2">
+                        <input type="checkbox" class="custom-control-input" id="cod" checked>
+                        <label class="custom-control-label" for="cod">Cash on Delivery</label>
+                    </div> -->
+                    <!-- Paypal -->
+                    <!-- <div class="custom-control custom-checkbox mr-sm-2">
+                        <input type="checkbox" class="custom-control-input" id="paypal">
+                        <label class="custom-control-label" for="paypal">Paypal <img class="ml-15" src="assets/img/core-img/paypal.png" alt=""></label>
+                    </div> -->
+                </div>
+
+                <div class="cart-btn mt-100">
+                    <button type="submit" (click)="onSubmit()" class="btn amado-btn w-100">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="orderStatus">
+        <div class="col-12 text-center mt-100">
+            <hr />
+            <h3>Seu pedido {{ orderStatus }} foi gerado com sucesso.</h3>
+            <hr />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="search-wrapper section-padding-100">
+    <div class="search-close" (click)="closeSearchBar.emit()">
+        <i class="fa fa-close" aria-hidden="true"></i>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="search-content">
+                    <form>
+                        <input type="search" name="search" id="search" placeholder="Type your keyword..." [value]="query" (keyup)="search.emit($event.target.value)" autocomplete="off">
+                        <button type="button"><img src="assets/img/core-img/search.png" alt=""></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 list-group-item" *ngFor="let offer of result">
+                <a [routerLink]="['/',offer.slug]" (click)="closeSearchBar.emit()">{{ offer.title }}</a>
+            </div>
+        </div>
+    </div>
+</div>

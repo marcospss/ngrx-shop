@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@cart/*": ["src/app/cart/*"],
+      "@checkout/*": ["src/app/checkout/*"],
+      "@core/*": ["src/app/core/*"],
+      "@env/*": ["src/environments/*"],
+      "@home/*": ["src/app/home/*"],
+      "@productDetails/*": ["src/app/product-details/*"],
+      "@reducersRoot": ["src/app/reducers"],
+      "@shop/*": ["src/app/shop/*"]
+    },
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  }
+}

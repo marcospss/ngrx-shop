@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row clearfix">
+        <div *ngFor="let offer of offers" class="single-products-catagory clearfix">
+            <a [routerLink]="['/', offer.slug]">
+                <img src="assets/img/bg-img/1.jpg" alt="">
+                <!-- Hover Content -->
+                <div class="hover-content">
+                    <div class="line"></div>
+                    <p>{{ offer.value | currency:'BRL' }}</p>
+                    <h4>{{ offer.title }}</h4>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>

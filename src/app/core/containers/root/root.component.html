@@ -1,0 +1,18 @@
+<mps-loading-animation></mps-loading-animation>
+<div [ngClass]="{'search-wrapper-on': showSearchBar$ | async }">
+
+    <mps-search [query]="searchQuery$ | async" [error]="error$ | async" [result]="resultSearch$ | async" (search)="search($event)" (closeSearchBar)="closeSearchBar()"></mps-search>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-3">
+                <mps-header [cartItems]="itemsCart$ | async" [showMobileNav]="showMobileNav$ | async" (openSearchBar)="openSearchBar()" (closeMobileNav)="closeMobileNav()" (openMobileNav)="openMobileNav()">
+                </mps-header>
+            </div>
+            <div class="col-12 col-lg-9">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+    <mps-newsletter></mps-newsletter>
+    <mps-footer></mps-footer>
+</div>
